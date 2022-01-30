@@ -1,0 +1,25 @@
+{
+  "name": "exercise-tracker-microservice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ethanshealey/exercise-tracker-microservice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ethanshealey/exercise-tracker-microservice/issues"
+  },
+  "homepage": "https://github.com/ethanshealey/exercise-tracker-microservice#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "mongodb": "^4.3.1"
+  }
+}

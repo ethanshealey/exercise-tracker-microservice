@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercise Tracker | ethanshealey.com</title>
+    </head>
+    <body>
+        <h1>Create a new user</h1>
+        <form action='/api/users' method='POST' style='background: #4a4a4a;color: #fff; padding: 10px;width:250px;border-radius: 10px;'>
+            <code>POST /api/user</code>
+            <br />
+            <input type='text' name='username' placeholder='username' style="width:240px"/>
+            <br /><br />
+            <input type='submit' value='Create User' style='width: 100%'>
+        </form>
+        <br />
+        <hr />
+        <h1>Add Exercise</h1>
+        <form id='exer-form' method='POST' style='background: #4a4a4a;color: #fff; padding: 10px;width:250px;border-radius: 10px;'>
+            <code>POST /api/user/:_id/exercises</code>
+            <br />
+            <input id='user-id' type='text' name=':_id' placeholder=':_id' style="width:240px"/><br /><br />
+            <input type='text' name='description' placeholder='description' style="width:240px"/><br /><br />
+            <input type="text" name="duration" placeholder="duration* (mins.)" style="width:240px"><br /><br />
+            <input id="date" type="text" name="date" placeholder="date (yyyy-mm-dd)" style="width:240px"><br /><br />
+            <input type='submit' value='Submit' style='width:100%'>
+        </form>
+        <script>
+            const form = document.getElementById('exer-form');
+            form.addEventListener('submit', () => {
+                const user_id = document.getElementById('user-id').value;
+                form.action = `/api/users/${user_id}/exercises`;
+                form.submit();
+            });
+        </script>
+    </body>
+</html>
