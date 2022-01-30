@@ -64,6 +64,7 @@ app.post('/api/users/:_id/exercises', (req, res) => {
         }
         client.db('exercise-tracker').collection('users').findOne({ _id: ObjectId(req.params._id) }).then((result) => {
             const date = new Date(req.body.date || Date.now()).toDateString()
+            console.log(req.body.date)
             const exercise = {
                 _id: result._id,
                 username: result.username,
