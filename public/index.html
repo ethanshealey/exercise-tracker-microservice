@@ -24,6 +24,14 @@
             <input id="date" type="text" name="date" placeholder="date (yyyy-mm-dd)" style="width:240px"><br /><br />
             <input type='submit' value='Submit' style='width:100%'>
         </form>
+        <br />
+        <code>
+            GET user's exercise log: GET /api/users/:_id/logs?[from][&to][&limit]
+
+            [ ] = optional
+            
+            from, to = dates (yyyy-mm-dd); limit = number
+        </code>
         <script>
             const form = document.getElementById('exer-form');
             form.addEventListener('submit', () => {
