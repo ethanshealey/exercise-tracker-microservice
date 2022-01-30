@@ -64,7 +64,6 @@ app.post('/api/users/:_id/exercises', (req, res) => {
         }
         client.db('exercise-tracker').collection('users').findOne({ _id: ObjectId(req.params._id) }).then((result) => {
             const date = new Date(req.body.date || Date.now()).toDateString()
-            console.log(req.body.date)
             const exercise = {
                 _id: result._id,
                 username: result.username,
@@ -94,9 +93,23 @@ app.get('/api/users/:_id/logs', (req, res) => {
         }
         client.db('exercise-tracker').collection('users').findOne({ _id: ObjectId(req.params._id) }).then((result) => {
             const log_count = result.log.length
-            result.log.forEach((log) => {
-                console.log(log.date)
-            })
+            if(req.query.from) {
+                result.log = result.log.filter(log => { 
+                    const date1 = new Date(req.query.from)
+                    const date2 = new Date(log.date)
+                    return date1 < date2
+                 })
+            }
+            if(req.query.to) {
+                result.log = result.log.filter(log => { 
+                    const date1 = new Date(req.query.to)
+                    const date2 = new Date(log.date)
+                    return date1 > date2
+                 })
+            }
+            if(req.query.limit) {
+                result.log.splice(0, parseInt(req.query.limit))
+            }
             return res.json({
                 _id: result._id,
                 username: result.username,
