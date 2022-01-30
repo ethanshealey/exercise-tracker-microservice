@@ -4,27 +4,33 @@
         <title>Exercise Tracker | ethanshealey.com</title>
     </head>
     <body>
-        <h1>Create a new user</h1>
-        <form action='/api/users' method='POST' style='background: #4a4a4a;color: #fff; padding: 10px;width:250px;border-radius: 10px;'>
-            <code>POST /api/user</code>
+        <div style="display:flex; width: 50%">
+            <div style="flex:1;">
+                <h1>Create a new user</h1>
+                <form action='/api/users' method='POST' style='background: #4a4a4a;color: #fff; padding: 10px;width:250px;border-radius: 10px;'>
+                    <code>POST /api/user</code>
+                    <br />
+                    <input type='text' name='username' placeholder='username' style="width:240px"/>
+                    <br /><br />
+                    <input type='submit' value='Create User' style='width: 100%'>
+                </form>
+            </div>
             <br />
-            <input type='text' name='username' placeholder='username' style="width:240px"/>
-            <br /><br />
-            <input type='submit' value='Create User' style='width: 100%'>
-        </form>
+            <div style="flex:1;">
+                <h1>Add Exercise</h1>
+                <form id='exer-form' method='POST' style='background: #4a4a4a;color: #fff; padding: 10px;width:250px;border-radius: 10px;'>
+                    <code>POST /api/user/:_id/exercises</code>
+                    <br />
+                    <input id='user-id' type='text' name='_id' placeholder=':_id' style="width:240px"/><br /><br />
+                    <input type='text' name='description' placeholder='description' style="width:240px"/><br /><br />
+                    <input type="text" name="duration" placeholder="duration* (mins.)" style="width:240px"><br /><br />
+                    <input id="date" type="text" name="date" placeholder="date (yyyy-mm-dd)" style="width:240px"><br /><br />
+                    <input type='submit' value='Submit' style='width:100%'>
+                </form>
+            </div>
+        </div>
         <br />
         <hr />
-        <h1>Add Exercise</h1>
-        <form id='exer-form' method='POST' style='background: #4a4a4a;color: #fff; padding: 10px;width:250px;border-radius: 10px;'>
-            <code>POST /api/user/:_id/exercises</code>
-            <br />
-            <input id='user-id' type='text' name='_id' placeholder=':_id' style="width:240px"/><br /><br />
-            <input type='text' name='description' placeholder='description' style="width:240px"/><br /><br />
-            <input type="text" name="duration" placeholder="duration* (mins.)" style="width:240px"><br /><br />
-            <input id="date" type="text" name="date" placeholder="date (yyyy-mm-dd)" style="width:240px"><br /><br />
-            <input type='submit' value='Submit' style='width:100%'>
-        </form>
-        <br />
         <code>
             GET user's exercise log: GET /api/users/:_id/logs?[from][&to][&limit]<br />
             [ ] = optional<br />
