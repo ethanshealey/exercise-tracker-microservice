@@ -94,6 +94,9 @@ app.get('/api/users/:_id/logs', (req, res) => {
         }
         client.db('exercise-tracker').collection('users').findOne({ _id: ObjectId(req.params._id) }).then((result) => {
             const log_count = result.log.length
+            result.log.forEach((log) => {
+                console.log(log.date)
+            })
             return res.json({
                 _id: result._id,
                 username: result.username,
